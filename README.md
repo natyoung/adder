@@ -27,3 +27,16 @@ To find out the answer to 1,999,999,999 + 999,937
 1. Press Keypad UP one billion, nine hundred ninety-nine million, nine hundred ninety-nine thousand, nine hundred ninety-nine times
 2. Press Keypad RIGHT nine hundred ninety-nine thousand, nine hundred thirty-seven times
 3. Press ENTER
+
+
+Developement setup
+==================
+
+https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/
+
+devkitARMupdate.pl
+
+chmod 755 devkitARMupdate.pl
+
+./devkitARMupdate.pl
+
