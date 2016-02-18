@@ -1,3 +1,6 @@
+How to run it
+=============
+
 Download the game boy emulator from http://www.bannister.org/software/ba.htm
 
 Open the file called thelegendofadder_mb.gba
