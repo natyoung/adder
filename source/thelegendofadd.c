@@ -12,19 +12,20 @@ const u16 trollink[] = {
 
 #define MODE_4 0x4
 #define BG2_ENABLE 0x400
-u16* paletteMem = (u16*)0x5000000;	// 256 16 bit BGR
-u16* videoBuffer = (u16*)0x6000000; // video memory
+u16* paletteMem = (u16*)0x5000000;
+u16* videoBuffer = (u16*)0x6000000;
 
 void initColourPalette(void);
 void drawBackground(void);
 void plotPixel(int x, int y, unsigned short int c);
 void processInput(void);
-void bitwiseAdd(void);
+void putNumberOnOtherNumber(void);
 void superMarioPrint(void);
 void resetThisAwesomeGame(void);
 int plusOneAmazingIncrement(int plusOneToMe);
 int magicalTriforceDecrement(int negativeOneMePlz);
 void resetRectangle(void);
+int fairyNumber(int y, int x);
 
 volatile int num1=0;
 volatile int num2=0;
@@ -37,6 +38,7 @@ int main(void) {
 	tte_init_bmp(MODE_4, &fwf_default, bmp8_drawg_default);
 	tte_init_con();
 	drawBackground();
+	resetRectangle();
 	while (1) {
 		key_poll();
 		processInput();
@@ -46,7 +48,7 @@ int main(void) {
 }
 
 void plotPixel(int x, int y, unsigned short int c) {
-	videoBuffer[(y) *120 + (x)] = (c);
+	videoBuffer[fairyNumber(y,x)] = (c);
 }
 
 void processInput(void) {
@@ -70,7 +72,7 @@ void processInput(void) {
 		resetRectangle();
 		sum = num1 ^ num2;
 		carry = num1 & num2;
-		bitwiseAdd();
+		putNumberOnOtherNumber();
 		resetThisAwesomeGame();
 	}
 }
@@ -84,12 +86,12 @@ void initColourPalette(void) {
 void drawBackground(void) {
 	for(int y=0; y<160; y = plusOneAmazingIncrement(y)) {
 		for(int x=0; x<120; x = plusOneAmazingIncrement(x)) {
-			plotPixel(x, y, trollink[y*120+x]);
+			plotPixel(x, y, trollink[fairyNumber(y,x)]);
 		}
 	}
 }
 
-void bitwiseAdd(void) {
+void putNumberOnOtherNumber(void) {
   while(carry != 0) {
     carry <<= 1;
     num1 = sum;
@@ -140,6 +142,21 @@ int magicalTriforceDecrement(int negativeOneMePlz) {
 			minusOne = link;
 			ganon = negativeOneMePlz ^ minusOne;
 			link = negativeOneMePlz & minusOne;
+	}
+	return ganon;
+}
+
+int fairyNumber(int y, int fairy) {
+	int heart = y * 120;
+  unsigned int ganon, link;
+	ganon = heart ^ fairy;
+	link = heart & fairy;
+	while (link != 0) {
+			link = link << 1;
+			heart = ganon;
+			fairy = link;
+			ganon = heart ^ fairy;
+			link = heart & fairy;
 	}
 	return ganon;
 }
