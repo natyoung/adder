@@ -37,9 +37,10 @@ Developement setup
 
 https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/
 
-devkitARMupdate.pl
+download devkitARMupdate.pl
 
 chmod 755 devkitARMupdate.pl
 
 ./devkitARMupdate.pl
 
+edit source/thelegendofadd.c with better codes
