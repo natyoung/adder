@@ -39,6 +39,8 @@ int main(void) {
 	tte_init_con();
 	drawBackground();
 	resetRectangle();
+	tte_printf("#{P:5,5}");
+	tte_printf("The Legend of Adda");
 	while (1) {
 		key_poll();
 		processInput();
