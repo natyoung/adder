@@ -19,30 +19,28 @@ void initColourPalette(void);
 void drawBackground(void);
 void plotPixel(int x, int y, unsigned short int c);
 void processInput(void);
-void addNumbersWithoutAddOperatorOrOtherAddFunctionsThatCameFromElsewhere(void);
+void bitwiseAdd(void);
+void superMarioPrint(void);
+void resetThisAwesomeGame(void);
+int plusOneAmazingIncrement(int plusOneToMe);
+int magicalTriforceDecrement(int negativeOneMePlz);
+void resetRectangle(void);
 
-int num1=0;
-int num2=0;
-int total=0;
+volatile int num1=0;
+volatile int num2=0;
+unsigned volatile int carry;
+unsigned volatile int sum;
 
 int main(void) {
 	REG_DISPCNT = MODE_4 | BG2_ENABLE;
 	initColourPalette();
 	tte_init_bmp(MODE_4, &fwf_default, bmp8_drawg_default);
 	tte_init_con();
-
+	drawBackground();
 	while (1) {
-		VBlankIntrWait();
 		key_poll();
-
 		processInput();
-		tte_printf("#{P:50,68}");
-		tte_printf("%d", num1);
-		tte_printf("#{P:50,78}");
-		tte_printf("%d", num2);
-		tte_printf("#{P:90,90}");
-		tte_printf("%d", total);
-		drawBackground();
+		superMarioPrint();
 	}
 	return 0;
 }
@@ -53,36 +51,99 @@ void plotPixel(int x, int y, unsigned short int c) {
 
 void processInput(void) {
 	if(key_hit(KEY_UP)) {
-		num1++;
+		resetRectangle();
+		num1 = plusOneAmazingIncrement(num1);
 	}
 	if(key_hit(KEY_DOWN)) {
-		num1--;
+		resetRectangle();
+		num1 = magicalTriforceDecrement(num1);
 	}
 	if(key_hit(KEY_LEFT)) {
-		num2--;
+		resetRectangle();
+		num2 = magicalTriforceDecrement(num2);
 	}
 	if(key_hit(KEY_RIGHT)) {
-		num2++;
+		resetRectangle();
+		num2 = plusOneAmazingIncrement(num2);
 	}
 	if(key_hit(KEY_START)) {
-		addNumbersWithoutAddOperatorOrOtherAddFunctionsThatCameFromElsewhere();
+		resetRectangle();
+		sum = num1 ^ num2;
+		carry = num1 & num2;
+		bitwiseAdd();
+		resetThisAwesomeGame();
 	}
 }
 
 void initColourPalette(void) {
-	for(int loop = 0; loop < 256; loop++) {
-		paletteMem[loop] = trollink_palette[loop];
+	for(int triforce = 0; triforce < 256; triforce = plusOneAmazingIncrement(triforce)) {
+		paletteMem[triforce] = trollink_palette[triforce];
 	}
 }
 
 void drawBackground(void) {
-	for(int y=0; y<160; y++) {
-		for(int x=0; x<120; x++) {
+	for(int y=0; y<160; y = plusOneAmazingIncrement(y)) {
+		for(int x=0; x<120; x = plusOneAmazingIncrement(x)) {
 			plotPixel(x, y, trollink[y*120+x]);
 		}
 	}
 }
 
-void addNumbersWithoutAddOperatorOrOtherAddFunctionsThatCameFromElsewhere() {
-	total = num1+num2;
+void bitwiseAdd(void) {
+  while(carry != 0) {
+    carry <<= 1;
+    num1 = sum;
+    num2 = carry;
+    sum = num1 ^ num2;
+    carry = num1 & num2;
+  }
+}
+
+void superMarioPrint(void) {
+	tte_printf("#{P:50,68}");
+	tte_printf("%d", num1);
+	tte_printf("#{P:50,78}");
+	tte_printf("%d", num2);
+	tte_printf("#{P:90,90}");
+	tte_printf("%d", sum);
+}
+
+void resetThisAwesomeGame(void) {
+	carry=0;
+	num1=0;
+	num2=0;
+}
+
+int plusOneAmazingIncrement(int plusOneToMe) {
+  unsigned int plusOne=1;
+  unsigned int masterSword, boomerang;
+	masterSword = plusOneToMe ^ plusOne;
+	boomerang = plusOneToMe & plusOne;
+	while (boomerang != 0) {
+			boomerang = boomerang << 1;
+			plusOneToMe = masterSword;
+			plusOne = boomerang;
+			masterSword = plusOneToMe ^ plusOne;
+			boomerang = plusOneToMe & plusOne;
+	}
+	return masterSword;
+}
+
+int magicalTriforceDecrement(int negativeOneMePlz) {
+  int minusOne=-1;
+  unsigned int ganon, link;
+	ganon = negativeOneMePlz ^ minusOne;
+	link = negativeOneMePlz & minusOne;
+	while (link != 0) {
+			link = link << 1;
+			negativeOneMePlz = ganon;
+			minusOne = link;
+			ganon = negativeOneMePlz ^ minusOne;
+			link = negativeOneMePlz & minusOne;
+	}
+	return ganon;
+}
+
+void resetRectangle(void) {
+	tte_erase_rect(50, 68, 130, 100);
 }
