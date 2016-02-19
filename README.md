@@ -15,7 +15,7 @@ Open the file called thelegendofadder_mb.gba
 Instructions:
 =============
 
-To add two numbers together, first use the keypad to set the numbers.
+To add two numbers together, use the keypad to set the numbers and then press enter
 
 * Keypad UP = Increment first number.
 * Keypad DOWN = Decrement first number.
