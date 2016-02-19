@@ -1,3 +1,12 @@
+This is a solution to the [Software Shokunin Community Febuary Code Challenge](https://github.com/software-shokunin/feb-code-challenge)
+
+> Write a program that adds two (or more) integers, without using any of the
+> plus literal (+), the minus literal (-), the add method (or equivalent), the
+> subtraction method (or equivalent), the sum method. The integers can be
+> negative, zero or positive.
+
+- source/thelegendofadd.c
+
 How to run it
 =============
 
@@ -32,15 +41,8 @@ To find out the answer to 1,999,999,999 + 999,937
 3. Press ENTER
 
 
-Developement setup
+Compiling (MAC)
 ==================
-
-https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/
-
-download devkitARMupdate.pl
-
-chmod 755 devkitARMupdate.pl
-
-./devkitARMupdate.pl
-
-edit source/thelegendofadd.c with better codes
+- download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/)
+- chmod 755 devkitARMupdate.pl
+- ./devkitARMupdate.pl
