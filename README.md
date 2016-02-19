@@ -5,8 +5,6 @@ This is a solution to the [Software Shokunin Community Febuary Code Challenge](h
 > subtraction method (or equivalent), the sum method. The integers can be
 > negative, zero or positive.
 
-- source/thelegendofadd.c
-
 How to run it
 =============
 
