@@ -40,7 +40,9 @@ To find out the answer to 1,999,999,999 + 999,937
 
 Compiling (MAC)
 ==================
-    - download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/)
+
+Download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/)
+
     $ chmod 755 devkitARMupdate.pl
     $ ./devkitARMupdate.pl
     $ make clean
