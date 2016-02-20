@@ -8,9 +8,8 @@ This is a solution to the [Software Shokunin Community Febuary Code Challenge](h
 How to run it
 =============
 
-Download the game boy emulator from http://www.bannister.org/software/ba.htm
-
-Open the file called legendofadda.gba
+1. Download a Game Boy Advance emulator such as [http://www.bannister.org/software/ba.htm](Boycott Advance)
+2. Open the file called `legendofadda.gba`
 
 Instructions:
 =============
@@ -41,6 +40,8 @@ To find out the answer to 1,999,999,999 + 999,937
 
 Compiling (MAC)
 ==================
-- download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/)
-- chmod 755 devkitARMupdate.pl
-- ./devkitARMupdate.pl
+  - download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/Automated%20Installer/)
+  $ chmod 755 devkitARMupdate.pl
+  $ ./devkitARMupdate.pl
+  $ make clean
+  $ make
