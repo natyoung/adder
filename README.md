@@ -45,5 +45,9 @@ Download [devkitARMupdate.pl](https://sourceforge.net/projects/devkitpro/files/A
 
     $ chmod 755 devkitARMupdate.pl
     $ ./devkitARMupdate.pl
+    
+Use the Makefile
+    
+    $ cd legendofadder
     $ make clean
     $ make
