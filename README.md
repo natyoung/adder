@@ -10,7 +10,7 @@ How to run it
 
 Download the game boy emulator from http://www.bannister.org/software/ba.htm
 
-Open the file called thelegendofadda.gba
+Open the file called legendofadda.gba
 
 Instructions:
 =============
