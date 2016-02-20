@@ -8,7 +8,7 @@ This is a solution to the [Software Shokunin Community Febuary Code Challenge](h
 How to run it
 =============
 
-1. Download a Game Boy Advance emulator such as [http://www.bannister.org/software/ba.htm](Boycott Advance)
+1. Download a Game Boy Advance emulator such as [Boycott Advance](http://www.bannister.org/software/ba.htm)
 2. Open the file called `legendofadda.gba`
 
 Instructions:
